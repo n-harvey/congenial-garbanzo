@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { zipcall, zipforecast } from "../API/API";
 import { Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
+import Forecast from "./forecast";
 
 const Weather = () => {
         const zipCode = useParams().zipcode;
@@ -36,19 +37,7 @@ const Weather = () => {
                                         <br />
                                         <Row className="justify-content-center">
                                                 {forecast.map((item) => (
-                                                        <Col xs={12} md={2} className="text-center" key={item.dt}>
-                                                                <Row>
-                                                                        <Col className="col-12">{item.dt_txt}</Col>
-                                                                        <Col className="col-12">
-                                                                                <img
-                                                                                        src={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`}
-                                                                                        alt="weather icon"
-                                                                                />
-                                                                                {item.weather[0].description}
-                                                                        </Col>
-                                                                        <Col className="col-12">{item.main.temp}° F</Col>
-                                                                </Row>
-                                                        </Col>
+                                                        <Forecast item={item} />
                                                 ))}
                                         </Row>
                                 </>
