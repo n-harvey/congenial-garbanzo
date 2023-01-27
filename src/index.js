@@ -11,11 +11,11 @@ const router = createBrowserRouter([
         {
                 path: "/",
                 element: <App />,
-                errorElement: <Errorpage />,
                 children: [
                         {
                                 path: "/:zipcode",
                                 element: <Weather />,
+                                errorElement: <Errorpage />,
                         },
                 ],
         },

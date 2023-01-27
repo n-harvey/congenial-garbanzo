@@ -13,7 +13,7 @@ const SearchBar = () => {
         };
         return (
                 <Form onSubmit={handleSubmit}>
-                        <Form.Control type="text" placeholder="Enter Zip Code" value={zipCode} onChange={(e) => setZipCode(e.target.value)} />
+                        <Form.Control size="sm" type="text" placeholder="Enter Zip Code" value={zipCode} onChange={(e) => setZipCode(e.target.value)} />
                 </Form>
         );
 };

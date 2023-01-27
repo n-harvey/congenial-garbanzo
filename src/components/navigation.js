@@ -6,9 +6,9 @@ const navigation = () => {
         return (
                 <>
                         <Navbar bg="dark" variant="dark">
-                                <Container>
+                                <Container fluid>
                                         <Navbar.Brand>☁️ Weather</Navbar.Brand>
-                                        <Nav>
+                                        <Nav className="me-auto">
                                                 <Searchbar />
                                         </Nav>
                                 </Container>
