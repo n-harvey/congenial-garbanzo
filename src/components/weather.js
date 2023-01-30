@@ -3,6 +3,7 @@ import { zipcall, zipforecast } from "../API/API";
 import { Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Forecast from "./forecast";
+import Loading from "./loading";
 
 const Weather = () => {
         const zipCode = useParams().zipcode;
@@ -35,7 +36,7 @@ const Weather = () => {
                                         </Row>
                                         <br />
                                         <br />
-                                        <Row className="justify-content-center">
+                                        <Row className="">
                                                 {forecast.map((item) => (
                                                         <Forecast item={item} />
                                                 ))}
@@ -43,7 +44,9 @@ const Weather = () => {
                                 </>
                         ) : (
                                 <Row className="text-center">
-                                        <Col>Loading...</Col>
+                                        <Col>
+                                                <Loading />
+                                        </Col>
                                 </Row>
                         )}
                 </>

@@ -1,4 +1,4 @@
-import Card from "react-bootstrap/Card";
+import { Card, Col } from "react-bootstrap";
 
 const forecast = (props) => {
         const { item } = props;
@@ -9,14 +9,16 @@ const forecast = (props) => {
 
         return (
                 <>
-                        <Card style={{ width: "14rem" }}>
-                                <Card.Header className="text-center">{day}</Card.Header>
-                                <Card.Img variant="top" src={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`} />
-                                <Card.Body>
-                                        <Card.Title className="text-center">{item.main.temp}° F</Card.Title>
-                                        <Card.Text className="text-center">{item.weather[0].description}</Card.Text>
-                                </Card.Body>
-                        </Card>
+                        <Col>
+                                <Card style={{ width: "14rem", backgroundColor: "blue" }}>
+                                        <Card.Header className="text-center">{day}</Card.Header>
+                                        <Card.Img variant="top" src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} />
+                                        <Card.Body>
+                                                <Card.Title className="text-center">{item.main.temp}° F</Card.Title>
+                                                <Card.Text className="text-center">{item.weather[0].description}</Card.Text>
+                                        </Card.Body>
+                                </Card>
+                        </Col>
                 </>
         );
 };

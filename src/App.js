@@ -6,7 +6,7 @@ function App() {
         return (
                 <>
                         <Navigation />
-                        <Container fluid>
+                        <Container>
                                 <Outlet />
                         </Container>
                 </>
