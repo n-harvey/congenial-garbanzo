@@ -2,13 +2,18 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import Searchbar from "./searchbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
         const [zipCodes, setZipCodes] = useState([]);
 
-        useEffect(() => {
+        const getZipCodes = () => {
                 const zipCodes = JSON.parse(localStorage.getItem("zipCodes")) || [];
                 setZipCodes(zipCodes);
+        };
+
+        useEffect(() => {
+                getZipCodes();
         }, []);
 
         return (
@@ -18,13 +23,13 @@ const Navigation = () => {
                                         <Navbar.Brand>☁️ Weather</Navbar.Brand>{" "}
                                         {zipCodes.map((zipCode, index) => {
                                                 return (
-                                                        <Nav.Link key={index} href={`/${zipCode}`}>
+                                                        <Nav.Link as={Link} key={index} to={`/${zipCode}`}>
                                                                 {zipCode}
                                                         </Nav.Link>
                                                 );
                                         })}
                                         <Nav>
-                                                <Searchbar />
+                                                <Searchbar updateZipcodes={getZipCodes} />
                                         </Nav>
                                 </Container>
                         </Navbar>
@@ -33,4 +38,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-

@@ -38,7 +38,7 @@ const Weather = () => {
                                         </Row>
                                         <br />
                                         <br />
-                                        <Row className="">
+                                        <Row className="d-flex justify-content-center">
                                                 {forecast.map((item, index) => (
                                                         <Forecast item={item} key={index} />
                                                 ))}
