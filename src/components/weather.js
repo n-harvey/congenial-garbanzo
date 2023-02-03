@@ -6,6 +6,8 @@ import Forecast from "./forecast";
 import Loading from "./loading";
 
 const Weather = () => {
+        console.log(localStorage.getItem("zipCodes"));
+
         const zipCode = useParams().zipcode;
         const [city, setCity] = useState("");
         const [forecast, setForecast] = useState("");
@@ -37,8 +39,8 @@ const Weather = () => {
                                         <br />
                                         <br />
                                         <Row className="">
-                                                {forecast.map((item) => (
-                                                        <Forecast item={item} />
+                                                {forecast.map((item, index) => (
+                                                        <Forecast item={item} key={index} />
                                                 ))}
                                         </Row>
                                 </>

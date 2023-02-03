@@ -6,8 +6,13 @@ const SearchBar = () => {
         const [zipCode, setZipCode] = useState("");
         const navigate = useNavigate();
 
+        //On summit of the form store the searched zipcode in local storage, up to 5 maximum
         const handleSubmit = (e) => {
                 e.preventDefault();
+                const zipCodes = JSON.parse(localStorage.getItem("zipCodes")) || [];
+                if (zipCodes.length >= 5) zipCodes.shift();
+                zipCodes.push(zipCode);
+                localStorage.setItem("zipCodes", JSON.stringify(zipCodes));
                 navigate(`/${zipCode}`);
                 setZipCode("");
         };
