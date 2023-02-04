@@ -1,0 +1,12 @@
+body {
+        padding-top: 56px;
+}
+
+.small {
+        min-width: 200px;
+        min-height: 100px;
+}
+
+.forecastCard {
+        width: 20%;
+}
