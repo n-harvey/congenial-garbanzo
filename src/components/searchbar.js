@@ -15,7 +15,7 @@ const SearchBar = (props) => {
                         navigate(`/${input}`);
                         setInput("");
                         return;
-                };
+                }
                 if (zipCodes.length >= 5) zipCodes.shift();
                 zipCodes.push(input);
                 localStorage.setItem("zipCodes", JSON.stringify(zipCodes));

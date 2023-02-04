@@ -18,16 +18,21 @@ const Navigation = () => {
 
         return (
                 <>
-                        <Navbar bg="light" variant="lg">
+                        <Navbar fixed="top" bg="light" variant="lg" expand="lg">
                                 <Container>
-                                        <Navbar.Brand>☁️ Weather</Navbar.Brand>{" "}
-                                        {zipCodes.map((zipCode, index) => {
-                                                return (
-                                                        <Nav.Link as={Link} key={index} to={`/${zipCode}`}>
-                                                                {zipCode}
-                                                        </Nav.Link>
-                                                );
-                                        })}
+                                        <Navbar.Brand>☁️ Weather</Navbar.Brand>
+                                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                                        <Navbar.Collapse sm={{ order: 3 }} id="basic-navbar-nav">
+                                                <Nav className="mx-auto">
+                                                        {zipCodes.map((zipCode, index) => {
+                                                                return (
+                                                                        <Nav.Link as={Link} key={index} to={`/${zipCode}`}>
+                                                                                {zipCode}
+                                                                        </Nav.Link>
+                                                                );
+                                                        })}
+                                                </Nav>
+                                        </Navbar.Collapse>
                                         <Nav>
                                                 <Searchbar updateZipcodes={getZipCodes} />
                                         </Nav>

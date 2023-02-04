@@ -13,6 +13,7 @@ const Weather = () => {
         const [forecast, setForecast] = useState("");
 
         useEffect(() => {
+                setCity("");
                 async function fetchData() {
                         const cityData = await zipcall(zipCode);
                         const forecastData = await zipforecast(zipCode);
@@ -28,7 +29,7 @@ const Weather = () => {
                 <>
                         {city ? (
                                 <>
-                                        <Row className="text-center">
+                                        <Row className="text-center small">
                                                 <Col className=" col-12 fs-1 fw-bold">{city.name}</Col>
                                                 <Col className="col-12">{city.main.temp}° F</Col>
                                                 <Col className="col-12">
@@ -36,8 +37,6 @@ const Weather = () => {
                                                         {city.weather[0].description}
                                                 </Col>
                                         </Row>
-                                        <br />
-                                        <br />
                                         <Row className="d-flex justify-content-center">
                                                 {forecast.map((item, index) => (
                                                         <Forecast item={item} key={index} />
