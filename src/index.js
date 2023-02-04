@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "src/index.css";
-import App from "src/App.js";
+import "./src/index.css";
+import App from "./src/App.js";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Errorpage from "./components/errorpage";
