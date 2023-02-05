@@ -14,6 +14,7 @@ const Weather = () => {
 
         useEffect(() => {
                 async function fetchData() {
+                        setCity("");
                         const cityData = await zipcall(zipCode);
                         const forecastData = await zipforecast(zipCode);
                         setCity(cityData);
@@ -28,17 +29,25 @@ const Weather = () => {
                 <>
                         {city ? (
                                 <>
-                                        <Row className="text-center">
-                                                <Col className=" col-12 fs-1 fw-bold">{city.name}</Col>
-                                                <Col className="col-12">{city.main.temp}° F</Col>
-                                                <Col className="col-12">
-                                                        <img src={`http://openweathermap.org/img/w/${city.weather[0].icon}.png`} alt="weather icon" />
-                                                        {city.weather[0].description}
+                                        <Row className="mx-5 px-5">
+                                                <Col>
+                                                        <Row>
+                                                                <Col className="fw-bold">{city.name}</Col>
+                                                        </Row>
+                                                        <Row>
+                                                                <Col className="fw-bold fs-1">{city.main.temp}° F</Col>
+                                                        </Row>
+                                                        <Row>
+                                                                <Col>{city.weather[0].description}</Col>
+                                                        </Row>
+                                                </Col>
+                                                <Col className="text-center">
+                                                        <img src={`http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`} alt="weather icon" />
                                                 </Col>
                                         </Row>
                                         <br />
                                         <br />
-                                        <Row className="d-flex justify-content-center">
+                                        <Row className="d-flex justify-content-center small">
                                                 {forecast.map((item, index) => (
                                                         <Forecast item={item} key={index} />
                                                 ))}

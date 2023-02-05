@@ -8,8 +8,8 @@ const forecast = (props) => {
 
         return (
                 <>
-                        <Col className="">
-                                <Card style={{ width: "10rem", backgroundColor: "#ffffe0" }}>
+                        <Col sm={2} md={3} lg={2} className="forecastCard ">
+                                <Card className="" style={{ backgroundColor: "#87CEFA" }}>
                                         <Card.Header className="text-center ">{day}</Card.Header>
                                         <Card.Img variant="top" src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} />
                                         <Card.Body>
