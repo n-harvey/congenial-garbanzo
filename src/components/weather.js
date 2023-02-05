@@ -25,29 +25,51 @@ const Weather = () => {
 
         console.log(forecast);
 
+        let background = "";
+        let weatherDescription = city.weather ? city.weather[0].main : "";
+
+        if (weatherDescription === "Thunderstorm") {
+                background = "thunderstorm-bg";
+        } else if (weatherDescription === "Drizzle" || weatherDescription === "Rain") {
+                background = "rain-bg";
+        } else if (weatherDescription === "Snow") {
+                background = "snow-bg";
+        } else if (weatherDescription === "Clear") {
+                background = "clear-bg";
+        } else if (weatherDescription === "Clouds") {
+                background = "clouds-bg";
+        }
+
         return (
                 <>
                         {city ? (
                                 <>
-                                        <Row className="mx-5 px-5">
-                                                <Col>
-                                                        <Row>
-                                                                <Col className="fw-bold">{city.name}</Col>
+                                        <Row className={background}>
+                                                <Col lg={6} md={4} sm={"auto"}>
+                                                        <Row className="d-flex ">
+                                                                <Col sm={6}>
+                                                                        <Row>
+                                                                                <Col className="fw-bold fs-5">{city.name}</Col>
+                                                                        </Row>
+                                                                        <Row>
+                                                                                <Col className="fw-bold fs-1 text-white">{city.main.temp.toFixed(0)}° F</Col>
+                                                                        </Row>
+                                                                        <Row>
+                                                                                <Col className=" fs-4">{city.weather[0].description}</Col>
+                                                                        </Row>
+                                                                </Col>
+                                                                <Col lg={2} className="ms-auto">
+                                                                        <img
+                                                                                src={`http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`}
+                                                                                alt="weather icon"
+                                                                        />
+                                                                </Col>
                                                         </Row>
-                                                        <Row>
-                                                                <Col className="fw-bold fs-1">{city.main.temp}° F</Col>
-                                                        </Row>
-                                                        <Row>
-                                                                <Col>{city.weather[0].description}</Col>
-                                                        </Row>
-                                                </Col>
-                                                <Col className="text-center">
-                                                        <img src={`http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`} alt="weather icon" />
                                                 </Col>
                                         </Row>
                                         <br />
                                         <br />
-                                        <Row className="d-flex justify-content-center small">
+                                        <Row className="d-flex justify-content-around small">
                                                 {forecast.map((item, index) => (
                                                         <Forecast item={item} key={index} />
                                                 ))}
