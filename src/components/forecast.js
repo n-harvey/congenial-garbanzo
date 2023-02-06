@@ -8,7 +8,7 @@ const forecast = (props) => {
         let background = "";
         let weatherDescription = item.weather[0].main;
 
-        console.log('Logging weather description ' + weatherDescription)
+        console.log("Logging weather description " + weatherDescription);
 
         if (weatherDescription === "Thunderstorm") {
                 background = "thunderstorm-bg";
@@ -26,11 +26,11 @@ const forecast = (props) => {
                 <>
                         <Col sm={2} md={3} lg={2} className="forecastCard ">
                                 <Card className={background}>
-                                        <Card.Header className="text-center text-white">{day}</Card.Header>
+                                        <Card.Header className="text-center fs-4">{day}</Card.Header>
                                         <Card.Img variant="top" src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} />
                                         <Card.Body>
-                                                <Card.Title className="text-center text-white">{(item.main.temp).toFixed(0)}° F</Card.Title>
-                                                <Card.Text className="text-center text-white fs-3">{item.weather[0].main}</Card.Text>
+                                                <Card.Title className="text-center fw-bold">{item.main.temp.toFixed(0)}° F</Card.Title>
+                                                <Card.Text className="text-center fs-3 fw-bold">{item.weather[0].main}</Card.Text>
                                         </Card.Body>
                                 </Card>
                         </Col>
