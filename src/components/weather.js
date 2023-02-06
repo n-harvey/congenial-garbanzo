@@ -44,9 +44,9 @@ const Weather = () => {
                 <>
                         {city ? (
                                 <>
-                                        <Row className={background}>
+                                        <Row className="justify-content-center">
                                                 <Col lg={6} md={4} sm={"auto"}>
-                                                        <Row className="d-flex ">
+                                                        <Row className={`${background}`}>
                                                                 <Col sm={6}>
                                                                         <Row>
                                                                                 <Col className="fw-bold fs-5">{city.name}</Col>

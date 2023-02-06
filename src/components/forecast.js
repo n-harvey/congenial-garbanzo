@@ -24,13 +24,13 @@ const forecast = (props) => {
         console.log(background);
         return (
                 <>
-                        <Col sm={2} md={3} lg={2} className="forecastCard ">
+                        <Col sm={2} md={3} lg={2} className="forecastCard text-white">
                                 <Card className={background}>
                                         <Card.Header className="text-center fs-4">{day}</Card.Header>
                                         <Card.Img variant="top" src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} />
                                         <Card.Body>
                                                 <Card.Title className="text-center fw-bold">{item.main.temp.toFixed(0)}° F</Card.Title>
-                                                <Card.Text className="text-center fs-3 fw-bold">{item.weather[0].main}</Card.Text>
+                                                <Card.Text className="text-center fs-3 fw-bold">{item.weather[0].description}</Card.Text>
                                         </Card.Body>
                                 </Card>
                         </Col>
