@@ -13,8 +13,8 @@ const Weather = () => {
         const [forecast, setForecast] = useState("");
 
         useEffect(() => {
-                setCity("");
                 async function fetchData() {
+                        setCity("");
                         const cityData = await zipcall(zipCode);
                         const forecastData = await zipforecast(zipCode);
                         setCity(cityData);
@@ -25,19 +25,56 @@ const Weather = () => {
 
         console.log(forecast);
 
+        let background = "";
+        let weatherDescription = city.weather ? city.weather[0].main : "";
+
+        if (weatherDescription === "Thunderstorm") {
+                background = "thunderstorm-bg";
+        } else if (weatherDescription === "Drizzle" || weatherDescription === "Rain") {
+                background = "rain-bg";
+        } else if (weatherDescription === "Snow") {
+                background = "snow-bg";
+        } else if (weatherDescription === "Clear") {
+                background = "clear-bg";
+        } else if (weatherDescription === "Clouds") {
+                background = "clouds-bg";
+        }
+
+        const timestamp = city.dt;
+        const date = new Date(timestamp * 1000);
+
         return (
                 <>
                         {city ? (
                                 <>
-                                        <Row className="text-center small">
-                                                <Col className=" col-12 fs-1 fw-bold">{city.name}</Col>
-                                                <Col className="col-12">{city.main.temp}° F</Col>
-                                                <Col className="col-12">
-                                                        <img src={`http://openweathermap.org/img/w/${city.weather[0].icon}.png`} alt="weather icon" />
-                                                        {city.weather[0].description}
+                                        <Row className="justify-content-center text-white">
+                                                <Col lg={6} md={4} sm={"auto"}>
+                                                        <Row className={`${background}`}>
+                                                                <Col sm={6}>
+                                                                        <Row>
+                                                                                <Col className="fw-bold fs-6 ">
+                                                                                        {city.name} as of {date.toLocaleTimeString()}
+                                                                                </Col>
+                                                                        </Row>
+                                                                        <Row>
+                                                                                <Col className="fw-bold fs-1">{city.main.temp.toFixed(0)}° F</Col>
+                                                                        </Row>
+                                                                        <Row>
+                                                                                <Col className=" fs-4 ">{city.weather[0].description}</Col>
+                                                                        </Row>
+                                                                </Col>
+                                                                <Col lg={2} className="ms-auto me-3">
+                                                                        <img
+                                                                                src={`http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`}
+                                                                                alt="weather icon"
+                                                                        />
+                                                                </Col>
+                                                        </Row>
                                                 </Col>
                                         </Row>
-                                        <Row className="d-flex justify-content-center">
+                                        <br />
+                                        <br />
+                                        <Row className="d-flex justify-content-between small">
                                                 {forecast.map((item, index) => (
                                                         <Forecast item={item} key={index} />
                                                 ))}

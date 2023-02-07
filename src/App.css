@@ -7,6 +7,37 @@ body {
         min-height: 100px;
 }
 
-.forecastCard {
-        width: 20%;
+.clear-bg {
+        background-image: url("https://cdn.theatlantic.com/thumbor/Na3HwfMOsY0QKyrr5bQWKTnVSsw=/795x444:2252x1537/1200x900/media/img/mt/2016/03/RTX283V4/original.jpg");
+        background-size: cover;
+}
+
+.clouds-bg {
+        background-image: url("https://ichef.bbci.co.uk/images/ic/1200x675/p0723j31.jpg");
+        background-size: cover;
+}
+
+.rain-bg {
+        background-image: url("https://www.rd.com/wp-content/uploads/2016/09/03-not-weird-facts-rain-Mr_Twister.jpg");
+        background-size: cover;
+}
+
+.thunderstorm-bg {
+        background-image: url("https://hartzellprop.com/wp-content/uploads/GettyImages-940296124-scaled.jpg");
+        background-size: cover;
+}
+
+.snow-bg {
+        background-image: url("https://www.oceanclock.com/img/cms/blog/Formation%20neige/comment%20se%20forme%20la%20neige.jpg");
+        background-size: cover;
+}
+
+.mist-bg {
+        background-image: url("https://life1019.com/wp-content/uploads/sites/7/2015/05/iStock_000049563462_Large.jpg");
+        background-size: cover;
+}
+
+.active-zip {
+        border-bottom: 1px solid black;
+        color: green;
 }

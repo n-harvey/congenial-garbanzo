@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const Navigation = () => {
         const [zipCodes, setZipCodes] = useState([]);
+        const [activeZipCode, setActiveZipCode] = useState(null);
 
         const getZipCodes = () => {
                 const zipCodes = JSON.parse(localStorage.getItem("zipCodes")) || [];
@@ -16,26 +17,36 @@ const Navigation = () => {
                 getZipCodes();
         }, []);
 
+        const handleClick = (zipCode) => {
+                setActiveZipCode(zipCode);
+        };
+
         return (
                 <>
-                        <Navbar fixed="top" bg="light" variant="lg" expand="lg">
+                        <Navbar fixed="top" bg="light" variant="light" expand="lg" className="">
                                 <Container>
                                         <Navbar.Brand>☁️ Weather</Navbar.Brand>
                                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                                        <Navbar.Collapse sm={{ order: 3 }} id="basic-navbar-nav">
+                                        <Navbar.Collapse id="basic-navbar-nav">
                                                 <Nav className="mx-auto">
                                                         {zipCodes.map((zipCode, index) => {
                                                                 return (
-                                                                        <Nav.Link as={Link} key={index} to={`/${zipCode}`}>
+                                                                        <Nav.Link
+                                                                                as={Link}
+                                                                                key={index}
+                                                                                to={`/${zipCode}`}
+                                                                                className={activeZipCode === zipCode ? "active-zip" : ""}
+                                                                                onClick={() => handleClick(zipCode)}
+                                                                        >
                                                                                 {zipCode}
                                                                         </Nav.Link>
                                                                 );
                                                         })}
                                                 </Nav>
+                                                <Nav>
+                                                        <Searchbar updateZipcodes={getZipCodes} />
+                                                </Nav>
                                         </Navbar.Collapse>
-                                        <Nav>
-                                                <Searchbar updateZipcodes={getZipCodes} />
-                                        </Nav>
                                 </Container>
                         </Navbar>
                 </>
