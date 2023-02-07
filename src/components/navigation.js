@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const Navigation = () => {
         const [zipCodes, setZipCodes] = useState([]);
+        const [activeZipCode, setActiveZipCode] = useState(null);
 
         const getZipCodes = () => {
                 const zipCodes = JSON.parse(localStorage.getItem("zipCodes")) || [];
@@ -15,6 +16,10 @@ const Navigation = () => {
         useEffect(() => {
                 getZipCodes();
         }, []);
+
+        const handleClick = (zipCode) => {
+                setActiveZipCode(zipCode);
+        };
 
         return (
                 <>
@@ -26,7 +31,13 @@ const Navigation = () => {
                                                 <Nav className="mx-auto">
                                                         {zipCodes.map((zipCode, index) => {
                                                                 return (
-                                                                        <Nav.Link as={Link} key={index} to={`/${zipCode}`}>
+                                                                        <Nav.Link
+                                                                                as={Link}
+                                                                                key={index}
+                                                                                to={`/${zipCode}`}
+                                                                                className={activeZipCode === zipCode ? "active-zip" : ""}
+                                                                                onClick={() => handleClick(zipCode)}
+                                                                        >
                                                                                 {zipCode}
                                                                         </Nav.Link>
                                                                 );

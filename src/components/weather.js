@@ -40,25 +40,30 @@ const Weather = () => {
                 background = "clouds-bg";
         }
 
+        const timestamp = city.dt;
+        const date = new Date(timestamp * 1000);
+
         return (
                 <>
                         {city ? (
                                 <>
-                                        <Row className="justify-content-center">
+                                        <Row className="justify-content-center text-white">
                                                 <Col lg={6} md={4} sm={"auto"}>
                                                         <Row className={`${background}`}>
                                                                 <Col sm={6}>
                                                                         <Row>
-                                                                                <Col className="fw-bold fs-5">{city.name}</Col>
+                                                                                <Col className="fw-bold fs-6 ">
+                                                                                        {city.name} as of {date.toLocaleTimeString()}
+                                                                                </Col>
                                                                         </Row>
                                                                         <Row>
-                                                                                <Col className="fw-bold fs-1 text-white">{city.main.temp.toFixed(0)}° F</Col>
+                                                                                <Col className="fw-bold fs-1">{city.main.temp.toFixed(0)}° F</Col>
                                                                         </Row>
                                                                         <Row>
-                                                                                <Col className=" fs-4">{city.weather[0].description}</Col>
+                                                                                <Col className=" fs-4 ">{city.weather[0].description}</Col>
                                                                         </Row>
                                                                 </Col>
-                                                                <Col lg={2} className="ms-auto">
+                                                                <Col lg={2} className="ms-auto me-3">
                                                                         <img
                                                                                 src={`http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`}
                                                                                 alt="weather icon"
@@ -69,7 +74,7 @@ const Weather = () => {
                                         </Row>
                                         <br />
                                         <br />
-                                        <Row className="d-flex justify-content-around small">
+                                        <Row className="d-flex justify-content-between small">
                                                 {forecast.map((item, index) => (
                                                         <Forecast item={item} key={index} />
                                                 ))}

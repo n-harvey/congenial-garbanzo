@@ -7,20 +7,14 @@ body {
         min-height: 100px;
 }
 
-.forecastCard {
-        width: 20%;
-}
-
-.blue-bg {
-        background-color: lightskyblue !important;
-}
-
 .clear-bg {
-        background-color: lightskyblue !important;
+        background-image: url("./images/sun-3588618_960_720.jpg");
+        background-size: cover;
 }
 
 .clouds-bg {
-        background-color: lightgray !important;
+        background-image: url("https://ichef.bbci.co.uk/images/ic/1200x675/p0723j31.jpg");
+        background-size: cover;
 }
 
 .rain-bg {
@@ -41,4 +35,9 @@ body {
 .mist-bg {
         background-image: url("https://life1019.com/wp-content/uploads/sites/7/2015/05/iStock_000049563462_Large.jpg");
         background-size: cover;
+}
+
+.active-zip {
+        border-bottom: 1px solid black;
+        color: green;
 }
